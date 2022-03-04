@@ -6,7 +6,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'built.js',
+        filename: 'js/built.js',// js放到js文件夹下
         path: resolve(__dirname,'build')
     },
     module: {
@@ -30,12 +30,13 @@ module.exports = {
         },
         // 处理图片
         {
-            test: /\.(jpg|png|gif)$/,
+            test: /\.(jpg|jpeg|png|gif)$/,
             loader: 'url-loader',
             options: {
                 limit: 8* 1024,
                 name: '[hash:10].[ext]',//文件名规则： hash取10位，后面接文件后缀名
                 esModule: false,// 关闭es6模块化
+                outputPath: 'imgs',// 图片放到imgs文件夹下
             }
         },
         // 处理html中的img资源
@@ -43,12 +44,13 @@ module.exports = {
             test: /\.html$/,
             loader: 'html-loader'
         },
-        // 处理其他资源
+        // 处理其他资源，如字体图标icon
         {
            exclude: /\.(css|js|less|html|jpg|png|jpeg)$/,
            loader: 'file-loader',
            options: {
                name: '[hash:10].[ext]',//文件名规则： hash取10位，后面接文件后缀名
+               outputPath: 'media',//其他资源放到media文件夹下
            }
         }
       ]

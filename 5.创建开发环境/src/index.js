@@ -1,4 +1,4 @@
-import "../icon/iconfont.css"
+import "./icon/iconfont.css"
 import './index.less'
 function add(a,b){
     return a+b
